@@ -1,0 +1,765 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "Aave" : {
+
+    },
+    "Algorand" : {
+
+    },
+    "App Icon" : {
+
+    },
+    "Appearance" : {
+
+    },
+    "AppIcon" : {
+
+    },
+    "AppIcon-Blue" : {
+
+    },
+    "AppIcon-Cash" : {
+
+    },
+    "AppIcon-Globe" : {
+
+    },
+    "AppIcon-Gold" : {
+
+    },
+    "AppIcon-GreenDollar" : {
+
+    },
+    "AppIcon-Purple" : {
+
+    },
+    "AppIcon-White" : {
+
+    },
+    "AppIcon-Yuan" : {
+
+    },
+    "Aptos" : {
+
+    },
+    "Arbitrum" : {
+
+    },
+    "Avalanche" : {
+
+    },
+    "Axie Infinity" : {
+
+    },
+    "Binance USD" : {
+
+    },
+    "Bitcoin" : {
+
+    },
+    "Bitcoin Cash" : {
+
+    },
+    "Bitget Token" : {
+
+    },
+    "Bittensor" : {
+
+    },
+    "BNB" : {
+
+    },
+    "Cardano" : {
+
+    },
+    "Celestia" : {
+
+    },
+    "Chainlink" : {
+
+    },
+    "Conflux" : {
+
+    },
+    "Cosmos" : {
+
+    },
+    "Cronos" : {
+
+    },
+    "Crypto" : {
+
+    },
+    "currency_afghan_afghani" : {
+
+    },
+    "currency_albanian_lek" : {
+
+    },
+    "currency_algerian_dinar" : {
+
+    },
+    "currency_angolan_kwanza" : {
+
+    },
+    "currency_argentine_peso" : {
+
+    },
+    "currency_armenian_dram" : {
+
+    },
+    "currency_aruban_florin" : {
+
+    },
+    "currency_australian_dollar" : {
+
+    },
+    "currency_azerbaijani_manat" : {
+
+    },
+    "currency_bahamian_dollar" : {
+
+    },
+    "currency_bahraini_dinar" : {
+
+    },
+    "currency_bangladeshi_taka" : {
+
+    },
+    "currency_barbadian_dollar" : {
+
+    },
+    "currency_belarusian_ruble" : {
+
+    },
+    "currency_belize_dollar" : {
+
+    },
+    "currency_bermudian_dollar" : {
+
+    },
+    "currency_bhutanese_ngultrum" : {
+
+    },
+    "currency_bolivian_boliviano" : {
+
+    },
+    "currency_bosnia_herzegovina_convertible_mark" : {
+
+    },
+    "currency_botswanan_pula" : {
+
+    },
+    "currency_brazilian_real" : {
+
+    },
+    "currency_british_pound" : {
+
+    },
+    "currency_brunei_dollar" : {
+
+    },
+    "currency_bulgarian_lev" : {
+
+    },
+    "currency_burundian_franc" : {
+
+    },
+    "currency_cambodian_riel" : {
+
+    },
+    "currency_canadian_dollar" : {
+
+    },
+    "currency_cape_verdean_escudo" : {
+
+    },
+    "currency_cayman_islands_dollar" : {
+
+    },
+    "currency_central_african_cfa_franc" : {
+
+    },
+    "currency_cfp_franc" : {
+
+    },
+    "currency_chilean_peso" : {
+
+    },
+    "currency_chinese_yuan" : {
+
+    },
+    "currency_colombian_peso" : {
+
+    },
+    "currency_comorian_franc" : {
+
+    },
+    "currency_congolese_franc" : {
+
+    },
+    "currency_costa_rican_colon" : {
+
+    },
+    "currency_croatian_kuna" : {
+
+    },
+    "currency_cuban_convertible_peso" : {
+
+    },
+    "currency_cuban_peso" : {
+
+    },
+    "currency_czech_koruna" : {
+
+    },
+    "currency_danish_krone" : {
+
+    },
+    "currency_djiboutian_franc" : {
+
+    },
+    "currency_dominican_peso" : {
+
+    },
+    "currency_east_caribbean_dollar" : {
+
+    },
+    "currency_egyptian_pound" : {
+
+    },
+    "currency_eritrean_nakfa" : {
+
+    },
+    "currency_ethiopian_birr" : {
+
+    },
+    "currency_euro" : {
+
+    },
+    "currency_falkland_islands_pound" : {
+
+    },
+    "currency_faroese_krona" : {
+
+    },
+    "currency_fijian_dollar" : {
+
+    },
+    "currency_gambian_dalasi" : {
+
+    },
+    "currency_georgian_lari" : {
+
+    },
+    "currency_ghanaian_cedi" : {
+
+    },
+    "currency_gibraltar_pound" : {
+
+    },
+    "currency_guatemalan_quetzal" : {
+
+    },
+    "currency_guernsey_pound" : {
+
+    },
+    "currency_guinean_franc" : {
+
+    },
+    "currency_guyanaese_dollar" : {
+
+    },
+    "currency_haitian_gourde" : {
+
+    },
+    "currency_honduran_lempira" : {
+
+    },
+    "currency_hong_kong_dollar" : {
+
+    },
+    "currency_hungarian_forint" : {
+
+    },
+    "currency_icelandic_krona" : {
+
+    },
+    "currency_indian_rupee" : {
+
+    },
+    "currency_indonesian_rupiah" : {
+
+    },
+    "currency_iranian_rial" : {
+
+    },
+    "currency_iraqi_dinar" : {
+
+    },
+    "currency_israeli_shekel" : {
+
+    },
+    "currency_jamaican_dollar" : {
+
+    },
+    "currency_japanese_yen" : {
+
+    },
+    "currency_jersey_pound" : {
+
+    },
+    "currency_jordanian_dinar" : {
+
+    },
+    "currency_kazakhstani_tenge" : {
+
+    },
+    "currency_kenyan_shilling" : {
+
+    },
+    "currency_kiribati_dollar" : {
+
+    },
+    "currency_kuwaiti_dinar" : {
+
+    },
+    "currency_kyrgyzstani_som" : {
+
+    },
+    "currency_laotian_kip" : {
+
+    },
+    "currency_latvian_lats" : {
+
+    },
+    "currency_lebanese_pound" : {
+
+    },
+    "currency_lesotho_loti" : {
+
+    },
+    "currency_liberian_dollar" : {
+
+    },
+    "currency_libyan_dinar" : {
+
+    },
+    "currency_lithuanian_litas" : {
+
+    },
+    "currency_macanese_pataca" : {
+
+    },
+    "currency_macedonian_denar" : {
+
+    },
+    "currency_malagasy_ariary" : {
+
+    },
+    "currency_malawian_kwacha" : {
+
+    },
+    "currency_malaysian_ringgit" : {
+
+    },
+    "currency_maldivian_rufiyaa" : {
+
+    },
+    "currency_manx_pound" : {
+
+    },
+    "currency_mauritanian_ouguiya" : {
+
+    },
+    "currency_mauritian_rupee" : {
+
+    },
+    "currency_mexican_peso" : {
+
+    },
+    "currency_moldovan_leu" : {
+
+    },
+    "currency_mongolian_tugrik" : {
+
+    },
+    "currency_moroccan_dirham" : {
+
+    },
+    "currency_mozambican_metical" : {
+
+    },
+    "currency_myanmar_kyat" : {
+
+    },
+    "currency_namibian_dollar" : {
+
+    },
+    "currency_nepalese_rupee" : {
+
+    },
+    "currency_netherlands_antillean_guilder" : {
+
+    },
+    "currency_new_zealand_dollar" : {
+
+    },
+    "currency_nicaraguan_cordoba" : {
+
+    },
+    "currency_nigerian_naira" : {
+
+    },
+    "currency_north_korean_won" : {
+
+    },
+    "currency_norwegian_krone" : {
+
+    },
+    "currency_omani_rial" : {
+
+    },
+    "currency_pakistani_rupee" : {
+
+    },
+    "currency_panamanian_balboa" : {
+
+    },
+    "currency_papua_new_guinean_kina" : {
+
+    },
+    "currency_paraguayan_guarani" : {
+
+    },
+    "currency_peruvian_sol" : {
+
+    },
+    "currency_philippine_peso" : {
+
+    },
+    "currency_polish_zloty" : {
+
+    },
+    "currency_qatari_riyal" : {
+
+    },
+    "currency_romanian_leu" : {
+
+    },
+    "currency_russian_ruble" : {
+
+    },
+    "currency_rwandan_franc" : {
+
+    },
+    "currency_saint_helena_pound" : {
+
+    },
+    "currency_salvadoran_colon" : {
+
+    },
+    "currency_samoan_tala" : {
+
+    },
+    "currency_sao_tome_and_principe_dobra" : {
+
+    },
+    "currency_saudi_riyal" : {
+
+    },
+    "currency_serbian_dinar" : {
+
+    },
+    "currency_seychellois_rupee" : {
+
+    },
+    "currency_sierra_leonean_leone" : {
+
+    },
+    "currency_singapore_dollar" : {
+
+    },
+    "currency_solomon_islands_dollar" : {
+
+    },
+    "currency_somali_shilling" : {
+
+    },
+    "currency_south_african_rand" : {
+
+    },
+    "currency_south_korean_won" : {
+
+    },
+    "currency_south_sudanese_pound" : {
+
+    },
+    "currency_sri_lankan_rupee" : {
+
+    },
+    "currency_sudanese_pound" : {
+
+    },
+    "currency_surinamese_dollar" : {
+
+    },
+    "currency_swazi_lilangeni" : {
+
+    },
+    "currency_swedish_krona" : {
+
+    },
+    "currency_swiss_franc" : {
+
+    },
+    "currency_syrian_pound" : {
+
+    },
+    "currency_taiwan_new_dollar" : {
+
+    },
+    "currency_tajikistani_somoni" : {
+
+    },
+    "currency_tanzanian_shilling" : {
+
+    },
+    "currency_thai_baht" : {
+
+    },
+    "currency_tongan_paanga" : {
+
+    },
+    "currency_trinidad_and_tobago_dollar" : {
+
+    },
+    "currency_tunisian_dinar" : {
+
+    },
+    "currency_turkish_lira" : {
+
+    },
+    "currency_turkmenistan_manat" : {
+
+    },
+    "currency_tuvaluan_dollar" : {
+
+    },
+    "currency_uae_dirham" : {
+
+    },
+    "currency_ugandan_shilling" : {
+
+    },
+    "currency_ukrainian_hryvnia" : {
+
+    },
+    "currency_uruguayan_peso" : {
+
+    },
+    "currency_us_dollar" : {
+
+    },
+    "currency_uzbekistani_som" : {
+
+    },
+    "currency_vanuatu_vatu" : {
+
+    },
+    "currency_venezuelan_bolivar" : {
+
+    },
+    "currency_vietnamese_dong" : {
+
+    },
+    "currency_west_african_cfa_franc" : {
+
+    },
+    "currency_yemeni_rial" : {
+
+    },
+    "currency_zambian_kwacha" : {
+
+    },
+    "currency_zimbabwean_dollar" : {
+
+    },
+    "Dai" : {
+
+    },
+    "Dark" : {
+
+    },
+    "Dogecoin" : {
+
+    },
+    "Ethereum" : {
+
+    },
+    "Ethereum Classic" : {
+
+    },
+    "Euro" : {
+
+    },
+    "Fiat" : {
+
+    },
+    "Filecoin" : {
+
+    },
+    "Flare" : {
+
+    },
+    "Hedera" : {
+
+    },
+    "Injective" : {
+
+    },
+    "Internet Computer" : {
+
+    },
+    "Jupiter" : {
+
+    },
+    "Kaspa" : {
+
+    },
+    "Language" : {
+
+    },
+    "Lido DAO" : {
+
+    },
+    "Lido Staked Ether" : {
+
+    },
+    "Light" : {
+
+    },
+    "Litecoin" : {
+
+    },
+    "Mantle Staked Ether" : {
+
+    },
+    "Monero" : {
+
+    },
+    "MultiversX" : {
+
+    },
+    "NEAR Protocol" : {
+
+    },
+    "Optimism" : {
+
+    },
+    "Polkadot" : {
+
+    },
+    "Polygon" : {
+
+    },
+    "Privacy Policy" : {
+
+    },
+    "Pyth Network" : {
+
+    },
+    "Quant" : {
+
+    },
+    "Rate" : {
+
+    },
+    "Render" : {
+
+    },
+    "Sei" : {
+
+    },
+    "Settings" : {
+
+    },
+    "Share" : {
+
+    },
+    "Shiba Inu" : {
+
+    },
+    "Solana" : {
+
+    },
+    "Stacks" : {
+
+    },
+    "Stellar" : {
+
+    },
+    "Sui" : {
+
+    },
+    "System" : {
+
+    },
+    "Terms of Service" : {
+
+    },
+    "Terra Luna Classic" : {
+
+    },
+    "Tether" : {
+
+    },
+    "Tezos" : {
+
+    },
+    "The Graph" : {
+
+    },
+    "Theta Network" : {
+
+    },
+    "Toncoin" : {
+
+    },
+    "TRON" : {
+
+    },
+    "Uniswap" : {
+
+    },
+    "UNUS SED LEO" : {
+
+    },
+    "US Dollar" : {
+
+    },
+    "USD Coin" : {
+
+    },
+    "VeChain" : {
+
+    },
+    "WhiteBIT Token" : {
+
+    },
+    "Wrapped Bitcoin" : {
+
+    },
+    "XRP" : {
+
+    },
+    "Zcash" : {
+
+    }
+  },
+  "version" : "1.2"
+}
