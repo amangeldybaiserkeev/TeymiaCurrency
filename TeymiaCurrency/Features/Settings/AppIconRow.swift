@@ -1,17 +1,16 @@
 import SwiftUI
 
 struct AppIconRow: View {
-
     var body: some View {
         NavigationLink {
             AppIconView()
         } label: {
-            Label("App Icon", icon: .appIcon)
+            SettingsRowLabel(option: .appIcon)
         }
     }
 }
 
-private struct AppIconView: View {
+struct AppIconView: View {
     private let iconManager = AppIconManager()
     @State private var haptic = 0
 
@@ -33,10 +32,10 @@ private struct AppIconView: View {
 
                         if isSelected { SelectionCheckmark() }
                     }
-                    .sensoryFeedback(.selection, trigger: haptic)
                 }
             }
         }
+        .appSensoryFeedback(.selection, trigger: haptic)
         .animation(.smooth, value: iconManager.currentIcon)
         .navigationTitle("App Icon")
     }

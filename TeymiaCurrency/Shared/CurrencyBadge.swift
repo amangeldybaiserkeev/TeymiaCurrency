@@ -1,15 +1,30 @@
 import SwiftUI
+import Kingfisher
 
 struct CurrencyBadge: View {
     let currency: Currency
-    var iconName: String? = nil
 
     private let iconSize = IconSize.xl
-    private var icon: String { iconName ?? currency.code }
 
     var body: some View {
         HStack(spacing: Spacing.sm) {
-            Image(icon)
+            KFImage(currency.iconURL)
+                .placeholder {
+                    Circle()
+//                        .fill(.secondary.opacity(0.1))
+                        .frame(width: iconSize, height: iconSize)
+                        .overlay {
+                            Text(String(currency.code.prefix(1)))
+                                .font(.caption2)
+                                .fontWeight(.bold)
+                                .foregroundStyle(.secondary.opacity(0.7))
+                        }
+                        .shimmer(.init())
+                }
+                .setProcessor(DownsamplingImageProcessor(size: CGSize(width: iconSize, height: iconSize)))
+                .scaleFactor(UIScreen.main.scale)
+                .cacheOriginalImage()
+                .fade(duration: 0.2)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: iconSize, height: iconSize)
@@ -23,6 +38,7 @@ struct CurrencyBadge: View {
                 Text(currency.code)
                     .font(.headline)
                     .fontWeight(.semibold)
+                    .foregroundStyle(.primary)
 
                 Text(currency.name)
                     .font(.subheadline)

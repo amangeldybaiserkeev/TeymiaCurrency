@@ -2,14 +2,18 @@ import SwiftUI
 
 struct SettingsView: View {
     var body: some View {
-        List {
-            ThemeRow()
-            AppIconRow()
-            LanguageRow()
-            AboutSection()
+        NavigationStack {
+            List {
+                ThemeRow()
+                AppIconRow()
+                HapticsRow()
+                LanguageRow()
+                AboutSection()
+            }
+            .groupBackground()
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar { CloseToolbarButton() }
         }
-        .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar { CloseToolbarButton() }
     }
 }

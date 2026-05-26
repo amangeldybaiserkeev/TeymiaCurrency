@@ -21,7 +21,7 @@ enum Theme: String, CaseIterable {
         }
     }
 
-    var systemImage: String {
+    var iconName: String {
         switch self {
         case .system: "swirl.circle.righthalf.filled"
         case .light: "sun.max"

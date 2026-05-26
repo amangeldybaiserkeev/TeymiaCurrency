@@ -1,11 +1,12 @@
-import SwiftUI
+import Foundation
 
 struct Currency: Codable, Identifiable, Hashable, Sendable {
     var id: String { code }
     let code: String
-    let name: LocalizedStringResource
+    let name: String
     let type: CurrencyType
-    let symbol: String
+    let iconUrlString: String?
+    let coinGeckoId: String?
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(code)
@@ -16,12 +17,20 @@ struct Currency: Codable, Identifiable, Hashable, Sendable {
     }
 }
 
-struct CachedRates: Codable, Sendable {
-    let timestamp: Date
-    let rates: [String: Double]
-}
+extension Currency {
+//    var dynamicLocalizedName: String {
+//        String(localized: name)
+//    }
 
-enum CurrencyType: String, Codable, Sendable {
-    case fiat
-    case crypto
+    var iconURL: URL? {
+        if self.type == .fiat {
+            let countryCode = String(code.prefix(2).lowercased())
+            return URL(string: "https://flagfeed.com/country/\(countryCode)")
+        } else {
+            if let iconUrlString, let url = URL(string: iconUrlString) {
+                return url
+            }
+            return URL(string: "https://assets.coingecko.com/coins/images/1/large/\(code.lowercased()).png")
+        }
+    }
 }

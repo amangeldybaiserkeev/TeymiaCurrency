@@ -6,7 +6,7 @@ struct LanguageRow: View {
             openAppSettings()
         } label: {
             HStack {
-                Label("Language", icon: .language)
+                SettingsRowLabel(option: .language)
 
                 Spacer()
                 

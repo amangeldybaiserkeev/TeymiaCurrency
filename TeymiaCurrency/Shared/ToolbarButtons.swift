@@ -10,7 +10,6 @@ struct CloseToolbarButton: ToolbarContent {
                     dismiss()
                 } label: {
                     Image(systemName: "xmark")
-                        .fontWeight(.semibold)
                 }
             } else {
                 Button(role: .cancel) {
@@ -20,7 +19,7 @@ struct CloseToolbarButton: ToolbarContent {
                         .font(.caption)
                         .fontWeight(.heavy)
                         .foregroundStyle(.secondary)
-                        .padding(Spacing.xs)
+                        .padding(8)
                         .background(.secondary.opacity(0.1), in: .circle)
                 }
             }
@@ -29,6 +28,7 @@ struct CloseToolbarButton: ToolbarContent {
 }
 
 struct PlusToolbarButton: ToolbarContent {
+    let namespace: Namespace.ID
     let action: () -> Void
 
     var body: some ToolbarContent {
@@ -38,21 +38,21 @@ struct PlusToolbarButton: ToolbarContent {
             } label: {
                 if #available(iOS 26.0, *) {
                     Image(systemName: "plus")
-                        .fontWeight(.semibold)
                 } else {
-                    Image(systemName: "plus")
+                    Image("plus")
                         .font(.caption)
                         .fontWeight(.bold)
-                        .foregroundStyle(.primary)
-                        .padding(Spacing.xs)
-                        .background(.secondary.opacity(0.15), in: .circle)
+                        .padding(8)
+                        .background(.secondary.opacity(0.1), in: .circle)
                 }
             }
+            .appMatchedTransitionSource(id: AnimationIDs.plusZoom, in: namespace)
         }
     }
 }
 
 struct SettingsToolbarButton: ToolbarContent {
+    let namespace: Namespace.ID
     let action: () -> Void
 
     var body: some ToolbarContent {
@@ -60,8 +60,17 @@ struct SettingsToolbarButton: ToolbarContent {
             Button {
                 action()
             } label: {
-                Image(systemName: "gearshape")
+                if #available(iOS 26.0, *) {
+                    Image(systemName: "gearshape")
+                } else {
+                    Image("gearshape")
+                        .font(.caption)
+                        .padding(8)
+                        .background(.secondary.opacity(0.1), in: .circle)
+
+                }
             }
+            .appMatchedTransitionSource(id: AnimationIDs.settingsZoom, in: namespace)
         }
     }
 }

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CurrencySection: Identifiable {
+struct CurrencySection: Identifiable, Equatable {
     let id: String
     let letter: String
     let currencies: [Currency]
@@ -10,46 +10,48 @@ struct CurrencySelectionView: View {
     @State private var selectedType: CurrencyType = .fiat
     @State private var searchText = ""
 
-    let vm: ConverterViewModel
+    let vm: CurrencySelectionViewModel
+
     private let pickerWidth: CGFloat = 200
 
     var body: some View {
         let currentSections = vm.buildSections(searchText: searchText, selectedType: selectedType)
-
-        ScrollViewReader { proxy in
-            ZStack(alignment: .trailing) {
-                if currentSections.isEmpty {
-                    ContentUnavailableView.search(text: searchText)
-                        .padding(.top, Spacing.xxl)
-                } else {
-                    List {
-                        ForEach(currentSections) { section in
-                            Section(section.letter) {
-                                ForEach(section.currencies) { currency in
-                                    CurrencySelectionRowView(
-                                        currency: currency,
-                                        isSelected: vm.selectedCurrencies.contains(where: { $0.code == currency.code }),
-                                        onTap: { vm.toggleCurrency(currency) }
-                                    )
+        NavigationStack {
+            ScrollViewReader { proxy in
+                ZStack(alignment: .trailing) {
+                    if currentSections.isEmpty {
+                        ContentUnavailableView.search(text: searchText)
+                            .padding(.top, Spacing.xxl)
+                    } else {
+                        List {
+                            ForEach(currentSections) { section in
+                                Section(section.letter) {
+                                    ForEach(section.currencies) { currency in
+                                        CurrencySelectionRowView(
+                                            currency: currency,
+                                            isSelected: vm.selectedCurrencies.contains(where: { $0.code == currency.code }),
+                                            onTap: { vm.toggleCurrency(currency) }
+                                        )
+                                    }
                                 }
+                                .id(section.letter)
                             }
-                            .id(section.letter)
                         }
-                    }
-                    .scrollIndicators(.hidden)
-                    .listStyle(.plain)
-                    .padding(.trailing, searchText.isEmpty ? Spacing.sm : 0)
+                        .scrollIndicators(.hidden)
+                        .listStyle(.plain)
+                        .padding(.trailing, searchText.isEmpty ? Spacing.sm : 0)
 
-                    if searchText.isEmpty {
-                        SectionIndexTitles(proxy: proxy, titles: currentSections.map(\.letter))
-                            .frame(maxHeight: .infinity, alignment: .center)
+                        if searchText.isEmpty {
+                            SectionIndexTitles(proxy: proxy, titles: currentSections.map(\.letter))
+                                .frame(maxHeight: .infinity, alignment: .center)
+                        }
                     }
                 }
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .adaptiveSearchable(text: $searchText)
+            .toolbar { toolbarContent }
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .adaptiveSearchable(text: $searchText)
-        .toolbar { toolbarContent }
     }
 
     @ToolbarContentBuilder
@@ -57,7 +59,7 @@ struct CurrencySelectionView: View {
         CloseToolbarButton()
 
         ToolbarItem(placement: .principal) {
-            Picker("", selection: $selectedType) {
+            Picker("Select Currency Type", selection: $selectedType) {
                 Text("Fiat").tag(CurrencyType.fiat)
                 Text("Crypto").tag(CurrencyType.crypto)
             }
@@ -98,7 +100,7 @@ private struct SectionIndexTitles: View {
                     currentTitle = nil
                 }
         )
-        .sensoryFeedback(.selection, trigger: currentTitle)
+        .sensoryFeedback(.selection, trigger: currentTitle) /// not appSensoryFeedback because let it always be
         .frame(width: itemSize)
     }
 }
@@ -109,9 +111,11 @@ private struct CurrencySelectionRowView: View {
     let onTap: () -> Void
 
     var body: some View {
-        Button(action: onTap) {
+        Button {
+            onTap()
+        } label: {
             HStack {
-                CurrencyBadge(currency: currency, iconName: currency.iconName)
+                CurrencyBadge(currency: currency)
 
                 Spacer()
 
@@ -122,7 +126,7 @@ private struct CurrencySelectionRowView: View {
             .contentShape(.rect)
         }
         .buttonStyle(.plain)
-        .sensoryFeedback(.selection, trigger: isSelected)
+        .appSensoryFeedback(.selection, trigger: isSelected)
     }
 }
 

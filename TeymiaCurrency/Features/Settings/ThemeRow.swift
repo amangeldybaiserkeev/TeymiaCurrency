@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ThemeRow: View {
-    @AppStorage("Theme") private var theme: Theme = .system
+    @AppStorage(AppStorageKeys.theme) private var theme: Theme = .system
 
     var body: some View {
         Picker(selection: $theme) {
@@ -12,7 +12,9 @@ struct ThemeRow: View {
             Label {
                 Text("Appearance")
             } icon: {
-                Image(systemName: theme.systemImage)
+                Image(systemName: theme.iconName)
+                    .font(.callout)
+                    .fontWeight(.medium)
             }
             .contentTransition(.symbolEffect(.replace))
         }

@@ -6,8 +6,23 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		E77137182FC59AB500E178A9 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E77137172FC59AB500E178A9 /* Kingfisher */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E771373B2FC5C26400E178A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 077BB5812E5C1D0400289DEF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 077BB5882E5C1D0400289DEF;
+			remoteInfo = TeymiaCurrency;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		077BB5892E5C1D0400289DEF /* TeymiaCurrency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeymiaCurrency.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77137372FC5C26400E178A9 /* TeymiaCurrencyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeymiaCurrencyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,10 +44,21 @@
 			path = TeymiaCurrency;
 			sourceTree = "<group>";
 		};
+		E77137382FC5C26400E178A9 /* TeymiaCurrencyTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TeymiaCurrencyTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		077BB5862E5C1D0400289DEF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				E77137182FC59AB500E178A9 /* Kingfisher in Frameworks */,
+			);
+		};
+		E77137342FC5C26400E178A9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
 			);
@@ -44,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				077BB58B2E5C1D0400289DEF /* TeymiaCurrency */,
+				E77137382FC5C26400E178A9 /* TeymiaCurrencyTests */,
 				077BB58A2E5C1D0400289DEF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				077BB5892E5C1D0400289DEF /* TeymiaCurrency.app */,
+				E77137372FC5C26400E178A9 /* TeymiaCurrencyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,9 +101,33 @@
 				077BB58B2E5C1D0400289DEF /* TeymiaCurrency */,
 			);
 			name = TeymiaCurrency;
+			packageProductDependencies = (
+				E77137172FC59AB500E178A9 /* Kingfisher */,
+			);
 			productName = TeymiaCurrency;
 			productReference = 077BB5892E5C1D0400289DEF /* TeymiaCurrency.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E77137362FC5C26400E178A9 /* TeymiaCurrencyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E771373D2FC5C26400E178A9 /* Build configuration list for PBXNativeTarget "TeymiaCurrencyTests" */;
+			buildPhases = (
+				E77137332FC5C26400E178A9 /* Sources */,
+				E77137342FC5C26400E178A9 /* Frameworks */,
+				E77137352FC5C26400E178A9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E771373C2FC5C26400E178A9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E77137382FC5C26400E178A9 /* TeymiaCurrencyTests */,
+			);
+			name = TeymiaCurrencyTests;
+			productName = TeymiaCurrencyTests;
+			productReference = E77137372FC5C26400E178A9 /* TeymiaCurrencyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -84,11 +136,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
+				LastSwiftUpdateCheck = 2650;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
 					077BB5882E5C1D0400289DEF = {
 						CreatedOnToolsVersion = 16.4;
+					};
+					E77137362FC5C26400E178A9 = {
+						CreatedOnToolsVersion = 26.5;
+						TestTargetID = 077BB5882E5C1D0400289DEF;
 					};
 				};
 			};
@@ -114,18 +170,27 @@
 			);
 			mainGroup = 077BB5802E5C1D0400289DEF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E77137162FC59AB500E178A9 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 077BB58A2E5C1D0400289DEF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				077BB5882E5C1D0400289DEF /* TeymiaCurrency */,
+				E77137362FC5C26400E178A9 /* TeymiaCurrencyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		077BB5872E5C1D0400289DEF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+		E77137352FC5C26400E178A9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
 			);
@@ -138,7 +203,20 @@
 			files = (
 			);
 		};
+		E77137332FC5C26400E178A9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E771373C2FC5C26400E178A9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 077BB5882E5C1D0400289DEF /* TeymiaCurrency */;
+			targetProxy = E771373B2FC5C26400E178A9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		077BB59D2E5C1D0600289DEF /* Debug configuration for PBXNativeTarget "TeymiaCurrency" */ = {
@@ -154,7 +232,7 @@
 				DEVELOPMENT_TEAM = SXCBCPV7Y9;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TeymiaCurrency/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Teymia Currency";
+				INFOPLIST_KEY_CFBundleDisplayName = Currency;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -195,7 +273,7 @@
 				DEVELOPMENT_TEAM = SXCBCPV7Y9;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = TeymiaCurrency/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Teymia Currency";
+				INFOPLIST_KEY_CFBundleDisplayName = Currency;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -354,6 +432,58 @@
 			};
 			name = Release;
 		};
+		E771373E2FC5C26400E178A9 /* Debug configuration for PBXNativeTarget "TeymiaCurrencyTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SXCBCPV7Y9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanbayserkeev.TeymiaCurrencyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeymiaCurrency.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TeymiaCurrency";
+			};
+			name = Debug;
+		};
+		E771373F2FC5C26400E178A9 /* Release configuration for PBXNativeTarget "TeymiaCurrencyTests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SXCBCPV7Y9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amanbayserkeev.TeymiaCurrencyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TeymiaCurrency.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TeymiaCurrency";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -373,7 +503,34 @@
 			);
 			defaultConfigurationName = Release;
 		};
+		E771373D2FC5C26400E178A9 /* Build configuration list for PBXNativeTarget "TeymiaCurrencyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E771373E2FC5C26400E178A9 /* Debug configuration for PBXNativeTarget "TeymiaCurrencyTests" */,
+				E771373F2FC5C26400E178A9 /* Release configuration for PBXNativeTarget "TeymiaCurrencyTests" */,
+			);
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E77137162FC59AB500E178A9 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E77137172FC59AB500E178A9 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E77137162FC59AB500E178A9 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 077BB5812E5C1D0400289DEF /* Project object */;
 }

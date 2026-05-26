@@ -1,18 +1,25 @@
 import SwiftUI
 
-struct MainView: View {
+struct CurrencyListView: View {
     @State private var showingCurrencySelection = false
     @State private var showingSettings = false
     @FocusState private var focusedCurrency: String?
+    @Namespace private var namespace
+    @Environment(DIContainer.self) private var container
 
-    let vm: ConverterViewModel
+    let vm: CurrencyListViewModel
 
     var body: some View {
         List {
             ForEach(vm.selectedCurrencies, id: \.code) { currency in
+                let rowFieldVM = container.makeCurrencyFieldViewModel(currency: currency) { amount, code in
+                    vm.updateAmount(amount, for: code)
+                }
+
                 CurrencyRowView(
                     currency: currency,
-                    vm: vm,
+                    listVM: vm,
+                    fieldVM: rowFieldVM,
                     focusedCurrency: $focusedCurrency
                 )
                 .swipeActions(edge: .trailing, allowsFullSwipe: true) {
@@ -27,24 +34,30 @@ struct MainView: View {
             .onMove(perform: moveCurrencies)
         }
         .listStyle(.plain)
+        .navigationTitle("Converter")
         .toolbar { toolbarContent }
         .onAppear { vm.fetchRates() }
         .sheet(isPresented: $showingCurrencySelection) {
-            NavigationStack {
-                CurrencySelectionView(vm: vm)
-            }
+            let selectionVM = CurrencySelectionViewModel(repository: vm.repository)
+
+            CurrencySelectionView(vm: selectionVM)
+                .appNavigationZoomTransition(id: AnimationIDs.plusZoom, in: namespace)
         }
         .sheet(isPresented: $showingSettings) {
-            NavigationStack {
-                SettingsView()
-            }
+            SettingsView()
+                .appNavigationZoomTransition(id: AnimationIDs.settingsZoom, in: namespace)
         }
+        .appSensoryFeedback(.selection, trigger: showingSettings || showingCurrencySelection)
     }
 
     @ToolbarContentBuilder
     private var toolbarContent: some ToolbarContent {
-        SettingsToolbarButton { showingSettings = true }
-        PlusToolbarButton { showingCurrencySelection = true }
+        SettingsToolbarButton(namespace: namespace) {
+            showingSettings = true
+        }
+        PlusToolbarButton(namespace: namespace) {
+            showingCurrencySelection = true
+        }
     }
 
 
