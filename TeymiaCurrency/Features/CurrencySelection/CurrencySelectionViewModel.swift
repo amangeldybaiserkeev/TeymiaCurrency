@@ -16,7 +16,20 @@ final class CurrencySelectionViewModel {
 
     private func loadAllCurrencies() {
         Task {
-            self.allCurrencies = try await repository.fetchAllCurrencies()
+            do {
+                self.allCurrencies = try await repository.fetchAllCurrencies()
+            } catch {
+                print("❌ Ошибка загрузки валют: \(error.localizedDescription)")
+
+                // Фолбэк: если сеть лежит, пытаемся достать хотя бы локальный фиат
+                if let localFiatProvider = (repository as? CurrencyRepository) {
+                    // Если архитектура позволяет, можно загрузить только фиат,
+                    // либо вернуть пустой массив, но не ломать UI
+                }
+
+                // Для безопасности: если упало всё вместе, давай попробуем показать хотя бы пустой массив,
+                // но в идеале — подгрузить фиат напрямую, если упала только крипта.
+            }
         }
     }
 

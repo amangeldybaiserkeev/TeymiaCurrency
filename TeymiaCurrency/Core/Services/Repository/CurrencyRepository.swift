@@ -1,4 +1,5 @@
 import Foundation
+import os
 
 protocol CurrencyRepositoryProtocol: Sendable {
     func observeSelectedCurrencies() -> AsyncStream<[Currency]>
@@ -7,39 +8,37 @@ protocol CurrencyRepositoryProtocol: Sendable {
     func saveSelectedCurrencies(_ currencies: [Currency]) async
 }
 
-final class CurrencyRepository: CurrencyRepositoryProtocol, @unchecked Sendable {
+final class CurrencyRepository: CurrencyRepositoryProtocol, Sendable {
     private let apiClient: CurrencyAPIClientProtocol
     private let storage: CurrencyStorageProtocol
-    private let staticDataProvider: CurrencyStaticDataProviderProtocol
-    private let lock = NSRecursiveLock()
+    private let fiatProvider: FiatCurrencyProviderProtocol
+    private let selectedCurrenciesStream: AsyncStream<[Currency]>
+    private let stateLock = OSAllocatedUnfairLock(initialState: RepositoryState())
 
-    private var selectedCurrenciesContinuation: AsyncStream<[Currency]>.Continuation?
-    private lazy var selectedCurrenciesStream: AsyncStream<[Currency]> = {
-        AsyncStream { continuation in
-            self.lock.lock()
-            self.selectedCurrenciesContinuation = continuation
-            continuation.yield(self.currentSelected)
-            self.lock.unlock()
-        }
-    }()
-
-    private var currentSelected: [Currency] = [] {
-        didSet {
-            lock.lock()
-            selectedCurrenciesContinuation?.yield(currentSelected)
-            lock.unlock()
-        }
+    private struct RepositoryState {
+        var currentSelected: [Currency] = []
+        var cachedCryptoList: [Currency] = []
+        var continuation: AsyncStream<[Currency]>.Continuation?
     }
 
     init(
         apiClient: CurrencyAPIClientProtocol,
         storage: CurrencyStorageProtocol,
-        staticDataProvider: CurrencyStaticDataProviderProtocol = LocalJSONCurrencyProvider()
+        fiatProvider: FiatCurrencyProviderProtocol = FiatCurrencyProvider()
     ) {
         self.apiClient = apiClient
         self.storage = storage
-        self.staticDataProvider = staticDataProvider
-        self.currentSelected = storage.loadSelectedCurrencies() ?? []
+        self.fiatProvider = fiatProvider
+
+        let (stream, continuation) = AsyncStream<[Currency]>.makeStream()
+        self.selectedCurrenciesStream = stream
+
+        let initialSelected = storage.loadSelectedCurrencies() ?? []
+        self.stateLock.withLock { state in
+            state.currentSelected = initialSelected
+            state.continuation = continuation
+            continuation.yield(initialSelected)
+        }
     }
 
     func observeSelectedCurrencies() -> AsyncStream<[Currency]> {
@@ -47,11 +46,18 @@ final class CurrencyRepository: CurrencyRepositoryProtocol, @unchecked Sendable 
     }
 
     func fetchAllCurrencies() async throws -> [Currency] {
-        try await staticDataProvider.loadInitialCurrencies()
+        async let fiatTask = fiatProvider.loadInitialCurrencies()
+        async let cryptoTask = fetchTopCryptoCurrencies()
+
+        let (fiats, cryptos) = try await (fiatTask, cryptoTask)
+        return fiats + cryptos
     }
 
     func saveSelectedCurrencies(_ currencies: [Currency]) async {
-        self.currentSelected = currencies
+        stateLock.withLock { state in
+            state.currentSelected = currencies
+            state.continuation?.yield(currencies)
+        }
         storage.saveSelectedCurrencies(currencies)
     }
 
@@ -94,6 +100,53 @@ final class CurrencyRepository: CurrencyRepositoryProtocol, @unchecked Sendable 
             self.storage.saveRatesCache(cache)
 
             return combinedRates
+        }
+    }
+
+    private func fetchTopCryptoCurrencies() async -> [Currency] {
+        // 1. Проверяем оперативную память (In-Memory Cache)
+        let memoryCached = stateLock.withLock { $0.cachedCryptoList }
+        if !memoryCached.isEmpty {
+            return memoryCached
+        }
+
+        // 2. Проверяем постоянный диск (Disk Cache) на случай, если приложение только открылось
+        let diskCached = storage.loadDownloadedCrypto() ?? []
+
+        do {
+            // 3. Пробуем обновить данные из сети
+            let marketDataList = try await apiClient.fetchTopCryptoList(vsCurrency: "usd", perPage: 100)
+
+            let freshCryptos = marketDataList.map { marketData in
+                Currency(
+                    code: marketData.symbol.uppercased(),
+                    name: marketData.name,
+                    type: .crypto,
+                    iconUrlString: marketData.image,
+                    coinGeckoId: marketData.id
+                )
+            }
+
+            // 4. Если всё успешно — обновляем и память, и диск
+            stateLock.withLock { state in
+                state.cachedCryptoList = freshCryptos
+            }
+            storage.saveDownloadedCrypto(freshCryptos)
+
+            return freshCryptos
+
+        } catch {
+            // 5. Сеть упала или сработал Rate Limit?
+            // Вместо краша или print() плавно возвращаем то, что было на диске.
+            // Если это самый первый запуск и дисковый кэш пуст — вернется пустой массив, UI не сломается.
+            if !diskCached.isEmpty {
+                stateLock.withLock { state in
+                    state.cachedCryptoList = diskCached
+                }
+                return diskCached
+            }
+
+            return []
         }
     }
 }

@@ -35,6 +35,7 @@ struct CurrencyListView: View {
         }
         .listStyle(.plain)
         .navigationTitle("Converter")
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbarContent }
         .onAppear { vm.fetchRates() }
         .sheet(isPresented: $showingCurrencySelection) {

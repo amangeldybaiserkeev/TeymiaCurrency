@@ -3,6 +3,7 @@ import Foundation
 protocol CurrencyAPIClientProtocol: Sendable {
     func fetchFiatRates(base: String) async throws -> [String: Double]
     func fetchCryptoRates(ids: [String], vsCurrency: String) async throws -> [String: Double]
+    func fetchTopCryptoList(vsCurrency: String, perPage: Int) async throws -> [CryptoMarketData]
 }
 
 final class CurrencyAPIClient: CurrencyAPIClientProtocol {
@@ -35,6 +36,11 @@ final class CurrencyAPIClient: CurrencyAPIClientProtocol {
             }
         }
         return rates
+    }
+
+    func fetchTopCryptoList(vsCurrency: String, perPage: Int) async throws -> [CryptoMarketData] {
+        let urlString = "\(cryptoBaseURL)/coins/markets?vs_currency=\(vsCurrency.lowercased())&order=market_cap_desc&per_page=\(perPage)&page=1&sparkline=false"
+        return try await performRequest(urlString: urlString)
     }
 
     private func performRequest<T: Codable>(urlString: String) async throws -> T {

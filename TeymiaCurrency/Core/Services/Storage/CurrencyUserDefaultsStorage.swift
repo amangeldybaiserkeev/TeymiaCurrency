@@ -5,6 +5,8 @@ protocol CurrencyStorageProtocol: Sendable {
     func loadSelectedCurrencies() -> [Currency]?
     func saveRatesCache(_ cache: CachedRates)
     func loadRatesCache() -> CachedRates?
+    func saveDownloadedCrypto(_ currencies: [Currency])
+    func loadDownloadedCrypto() -> [Currency]?
 }
 
 final class CurrencyUserDefaultsStorage: CurrencyStorageProtocol, @unchecked Sendable {
@@ -36,5 +38,9 @@ final class CurrencyUserDefaultsStorage: CurrencyStorageProtocol, @unchecked Sen
     func loadRatesCache() -> CachedRates? {
         guard let data = userDefaults.data(forKey: ratesCacheKey) else { return nil }
         return try? JSONDecoder().decode(CachedRates.self, from: data)
+    }
+
+    func saveDownloadedCrypto(_ currencies: [Currency]) {
+        <#code#>
     }
 }

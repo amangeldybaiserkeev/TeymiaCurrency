@@ -1,10 +1,10 @@
 import Foundation
 
-protocol CurrencyStaticDataProviderProtocol: Sendable {
+protocol FiatCurrencyProviderProtocol: Sendable {
     func loadInitialCurrencies() async throws -> [Currency]
 }
 
-final class LocalJSONCurrencyProvider: CurrencyStaticDataProviderProtocol {
+final class FiatCurrencyProvider: FiatCurrencyProviderProtocol {
     private let bundle: Bundle
     private let fileName: String
 
